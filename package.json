@@ -1,0 +1,38 @@
+{
+  "name": "@savafeed/game-engine-core",
+  "version": "1.0.0",
+  "description": "Core for game engine",
+  "license": "ISC",
+  "author": "Alexander (SavaFeeD) Shachnev",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "npm run build:core && npm run build:test && npm run start:test",
+    "start:test": "node dist_test/index.cjs.js",
+    "build:core": "rollup -c rollup.config.cjs --bundleConfigAsCjs",
+    "build:test": "rollup -c rollup-test.config.cjs --bundleConfigAsCjs"
+  },
+  "keywords": [
+    "canvas",
+    "ts",
+    "game-engine",
+    "core"
+  ],
+  "devDependencies": {
+    "@rollup/plugin-alias": "^5.1.1",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@savafeed/module-manager": "^1.1.2",
+    "rollup": "^4.40.0",
+    "rollup-plugin-dts": "^6.2.1",
+    "rollup-plugin-ts": "^3.4.5",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "reflect-metadata": "^0.2.2"
+  }
+}
