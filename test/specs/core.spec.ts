@@ -10,6 +10,7 @@ export const coreCase = () => {
     const config = {
       input: {
         canvas,
+        context: 'webgl',
       }
     };
 

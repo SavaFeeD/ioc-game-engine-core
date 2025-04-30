@@ -11,13 +11,18 @@ export class CanvasService {
   constructor(
     private configService: ConfigService,
   ) {
-    for (let context of Object.values(E_RENDERING_CONTEXT_ID)) {
-      if (this.ctxMap.has(context)) continue;
-      this.ctxMap.set(
-        context,
-        this.getContextById(context)
-      );
-    }
+    // for (let context of Object.values(E_RENDERING_CONTEXT_ID)) {
+    //   if (this.ctxMap.has(context)) continue;
+    //   this.ctxMap.set(
+    //     context,
+    //     this.getContextById(context)
+    //   );
+    // }
+    const context = this.configService.context;
+    this.ctxMap.set(
+      context,
+      this.getContextById(context)
+    );
   }
 
   public getCanvas() {
