@@ -1,7 +1,6 @@
 import Case from "test/core/base/case";
-import { Core } from "@src";
+import { Core, container } from "@src";
 import HTMLFabric from "test/core/base/html-fabric";
-import { container } from "@savafeed/module-manager";
 
 
 export const coreCase = () => {
