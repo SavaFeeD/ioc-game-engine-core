@@ -12,7 +12,10 @@ import {
   // @types
   TControllerMap,
   TControllerMapper,
+  // @controller.abstracts
+  AbstractGameController,
 } from './types';
+
 
 export {
   Core,
@@ -28,4 +31,6 @@ export {
   // @types
   TControllerMap,
   TControllerMapper,
+  // @controller.abstracts
+  AbstractGameController,
 };

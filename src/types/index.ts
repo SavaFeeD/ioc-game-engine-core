@@ -4,6 +4,8 @@ import { E_MOVE_DIRECTION } from "./entities/behaviors/move.types"
 import { E_CONTOROLLERS_TOKENS, E_CORE_TOKENS } from "./tokens.enum"
 import { TControllerMap, TControllerMapper } from "./controller-mapper"
 import { ICoreConfig } from "./config.interface"
+import { AbstractGameController } from "./controllers.abstract"
+
 
 export {
   // @enums
@@ -19,4 +21,6 @@ export {
   TControllerMapper,
   // @interfaces
   ICoreConfig,
+  // @controllers.abstract
+  AbstractGameController,
 }
