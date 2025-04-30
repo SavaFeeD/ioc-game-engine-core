@@ -1,8 +1,9 @@
 import { Injectable } from "@savafeed/module-manager";
-import PackageRepository from "src/repositories/package.repository";
+import { PackageRepository } from "src/repositories/package.repository";
+
 
 @Injectable()
-export default class RenderingService {
+export class RenderingService {
   constructor(
     private packageRepository: PackageRepository,
   ) {}

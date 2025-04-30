@@ -19,17 +19,24 @@ const getOutput = (folder) => [
     format: "cjs",
     sourcemap: true,
     exports: "auto",
+    inlineDynamicImports: true,
   },
   {
     file: `${folder}/index.esm.js`,
     format: "esm",
     sourcemap: true,
+    inlineDynamicImports: true,
   },
   {
     file: `${folder}/index.umd.js`,
     format: "umd",
     name: libraryName,
     sourcemap: true,
+    globals: {
+      "reflect-metadata": "Reflect",
+      "@savafeed/module-manager": "iocModuleManager", 
+    },
+    inlineDynamicImports: true,
   },
 ];
 
@@ -50,7 +57,7 @@ export default [
       }),
       resolve({
         preferBuiltins: true,
-        extensions: [".js", ".ts"],
+        extensions: [".js", ".ts", ".cts"],
       }),
       commonjs(),
       json(),

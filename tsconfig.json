@@ -1,14 +1,26 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+
+    "target": "ES2022",
     "module": "ESNext",
-    "strict": true,
-    "moduleResolution": "node",
-    "declaration": false,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
+    "moduleResolution": "Node",
+    "lib": ["ES2022", "DOM"],
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
     "baseUrl": ".",
+    "skipLibCheck": true,
+    "allowJs": true,
+    "checkJs": false,
     "paths": {
       "@src": ["src/index"]
     }

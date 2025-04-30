@@ -1,11 +1,13 @@
 import { E_RENDERING_CONTEXT_ID } from "src/types/rendering-context.enum";
 import { IEntity } from "src/types/entity.interface";
-import { IPackage } from "src/types/package.interface";
-import CanvasService from "./canvas.service";
+import { CanvasService } from "./canvas.service";
 import Package2DEntity from "src/entities/package2d.entity";
 import { TPackageEntityByContextId } from "src/types/package-context.types";
+import { Injectable } from "@savafeed/module-manager";
 
-export default class DrawService {
+
+@Injectable()
+export class DrawService {
 
   constructor(
     private canvasService: CanvasService,

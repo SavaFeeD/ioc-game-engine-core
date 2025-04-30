@@ -1,4 +1,4 @@
-import coreCase from './core.spec';
+import { coreCase } from './core.spec';
 import defaultCase from './default.spec';
 
 export {

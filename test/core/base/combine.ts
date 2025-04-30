@@ -20,7 +20,10 @@ export class Combine {
   run() {
     this.tests.forEach((pair) => {
       const [name, testCase] = pair;
+      console.log('');
+      console.log('');
       console.log(`[Combine] Running test case '${name}'`);
+      console.log('');
       testCase();
     });
   }

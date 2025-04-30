@@ -1,8 +1,9 @@
 import { Injectable } from "@savafeed/module-manager";
 import { ICoreConfig } from "src/types/config.interface";
 
+
 @Injectable()
-export default class ConfigRepository {
+export class ConfigRepository {
   private CONFIG: ICoreConfig | null = null;
 
   public get config() {
@@ -11,6 +12,7 @@ export default class ConfigRepository {
   }
 
   public set config(config: ICoreConfig) {
+    if (!config) throw new Error('Parameter "config" is required');
     this.CONFIG = config;
   }
 

@@ -1,17 +1,16 @@
-import { Module } from "@savafeed/module-manager";
-import GameController from "./controllers/game.controller";
-import ConfigRepository from "./repositories/config.repository";
-import ConfigService from "./services/config.service";
-import DrawService from "./services/draw.service";
-import CanvasService from "./services/canvas.service";
-import PackageRepository from "./repositories/package.repository";
+import { AbstractModule, Module } from "@savafeed/module-manager";
+import { GameController } from "./controllers/game.controller";
+import { ConfigRepository } from "./repositories/config.repository";
+import { ConfigService } from "./services/config.service";
+import { DrawService } from "./services/draw.service";
+import { CanvasService } from "./services/canvas.service";
+import { PackageRepository } from "./repositories/package.repository";
+import { RenderingService } from "./services/rendering.service";
+import 'reflect-metadata';
 
 
 @Module({
-  name: 'core',
-  controllers: [
-    GameController,
-  ],
+  name: 'core-app',
   providers: [
     // @repositories
     ConfigRepository,
@@ -20,6 +19,10 @@ import PackageRepository from "./repositories/package.repository";
     ConfigService,
     DrawService,
     CanvasService,
+    RenderingService,
+  ],
+  controllers: [
+    GameController,
   ],
 })
-export default class CoreModule {};
+export class CoreModule {};

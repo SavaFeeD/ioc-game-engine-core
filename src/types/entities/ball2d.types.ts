@@ -18,10 +18,10 @@ export interface IBallEntity extends IEntity<E_RENDERING_CONTEXT_ID.DIMENSIONAL2
 }
 
 export interface IUpdateBallOptions {
-  position: Partial<IBallEntity>['position'];
-  velocity: Partial<IBallEntity>['velocity'];
-  radius: Partial<IBallEntity>['radius'];
-  color: Partial<IBallEntity>['color'];
+  position?: Partial<IBallEntity>['position'];
+  velocity?: Partial<IBallEntity>['velocity'];
+  radius?: Partial<IBallEntity>['radius'];
+  color?: Partial<IBallEntity>['color'];
 }
 
 export interface IInitialBallEntity {
