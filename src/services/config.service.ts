@@ -21,5 +21,9 @@ export class ConfigService {
   public get canvas() {
     return this.configRepository.config.input.canvas;
   }
+
+  public get context() {
+    return this.configRepository.config.input.context;
+  }
   
 }

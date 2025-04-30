@@ -1,6 +1,7 @@
 import Case from "test/core/base/case";
 import { Core, container } from "@src";
 import HTMLFabric from "test/core/base/html-fabric";
+import { E_RENDERING_CONTEXT_ID } from "src/types/rendering-context.enum";
 
 
 export const coreCase = () => {
@@ -10,7 +11,7 @@ export const coreCase = () => {
     const config = {
       input: {
         canvas,
-        context: 'webgl',
+        context: E_RENDERING_CONTEXT_ID.DIMENSIONAL2,
       }
     };
 
