@@ -1,4 +1,5 @@
 import { Controller } from "@savafeed/module-manager";
+import Ball2D from "src/entities/ball2d.entity";
 import { PackageRepository } from "src/repositories/package.repository";
 import { DrawService } from "src/services/draw.service";
 import { RenderingService } from "src/services/rendering.service";
@@ -24,7 +25,7 @@ export class GameController implements AbstractGameController {
     });
   }
 
-  public addEntity(entity: IEntity<E_RENDERING_CONTEXT_ID>) {
+  public addEntity(entity: IEntity<any>) {
     const drawPackage = this.drawService.package(entity);
     this.packageRepository.addPackage(drawPackage);
     this.renderingService
