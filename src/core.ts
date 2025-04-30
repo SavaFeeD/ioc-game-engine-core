@@ -1,13 +1,16 @@
 import { Container } from "@savafeed/module-manager";
-import { E_CONTOROLLERS_TOKENS, E_CORE_TOKENS } from "./types/tokens.enum";
-import { ICoreConfig } from "./types/config.interface";
 import { CoreModule } from "./core.module";
-import { AbstractGameController } from "./types/controllers.abstract";
+import {
+  E_CONTOROLLERS_TOKENS,
+  E_CORE_TOKENS,
+  ICoreConfig,
+  TControllerMapper,
+} from "./types";
+
 
 export class Core {
-
   constructor(
-    public appContainer: Container,
+    private appContainer: Container,
     private initialConfig: ICoreConfig,
   ) {
     this.appContainer.registerInnerInject({
@@ -17,9 +20,16 @@ export class Core {
     this.appContainer.registerModule(CoreModule);
   }
   
+  public getController<TOKEN extends E_CONTOROLLERS_TOKENS>(token: E_CONTOROLLERS_TOKENS): TControllerMapper<TOKEN> | undefined {
+    return this.appContainer.getController<TControllerMapper<TOKEN>>(token);
+  }
+
   public test() {
-    const gameController = this.appContainer.getController<AbstractGameController>(E_CONTOROLLERS_TOKENS.GAME);
-    [gameController].forEach((controller) => {
+    const controllerTokens: E_CONTOROLLERS_TOKENS[] = [
+      E_CONTOROLLERS_TOKENS.GAME,
+    ];
+    controllerTokens.forEach((token) => {
+      const controller = this.getController(token);
       if (!controller) {
         throw new Error('Controller is not defined');
       }
