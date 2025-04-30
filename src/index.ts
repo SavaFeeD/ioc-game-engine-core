@@ -15,6 +15,7 @@ import {
   // @controller.abstracts
   AbstractGameController,
 } from './types';
+import Ball2D from './entities/ball2d.entity';
 
 
 export {
@@ -33,4 +34,6 @@ export {
   TControllerMapper,
   // @controller.abstracts
   AbstractGameController,
+  // @entities
+  Ball2D,
 };
