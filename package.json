@@ -15,7 +15,8 @@
     "start:core": "node dist/index.cjs.js",
     "start:test": "node dist_test/index.cjs.js",
     "build:core": "rimraf dist && rollup -c rollup.config.cjs --bundleConfigAsCjs",
-    "build:test": "rimraf dist_test && rollup -c rollup-test.config.cjs --bundleConfigAsCjs"
+    "build:test": "rimraf dist_test && rollup -c rollup-test.config.cjs --bundleConfigAsCjs",
+    "deliver": "npm run build:core && npm version patch && npm publish --access=public"
   },
   "keywords": [
     "canvas",
