@@ -1,6 +1,8 @@
 import { E_DIMENSIONAL_ID } from "src/types/rendering-context.enum";
 import { IPoint2d } from "../point2d.types";
 import { IPoint3d } from "../point3d.types";
+import MoveCalculator2d from "src/entities/behaviors/move-calculator2d";
+import MoveCalculator3d from "src/entities/behaviors/move-calculator3d";
 
 export type TPositionDimensionalMap = {
   [E_DIMENSIONAL_ID.DIMENSIONAL2]: IPoint2d,
@@ -27,3 +29,8 @@ export enum E_MOVE_DIRECTION {
   FORWARD = 'forward',
   BACKWARD = 'backward',
 }
+
+export type TMoveCalculatorMap = {
+  [E_DIMENSIONAL_ID.DIMENSIONAL2]: typeof MoveCalculator2d,
+  [E_DIMENSIONAL_ID.DIMENSIONAL3]: typeof MoveCalculator3d,
+};

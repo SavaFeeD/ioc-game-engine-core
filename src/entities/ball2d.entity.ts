@@ -1,8 +1,11 @@
 import { IBallEntity, IInitialBallEntity, IUpdateBallOptions } from "src/types/entities/ball2d.types";
 import { E_DIMENSIONAL_ID, E_RENDERING_CONTEXT_ID } from "src/types/rendering-context.enum";
-import BehaviorsEntity, { E_BEHAVIORS, TBehaviorProperty } from "./behaviors.entity";
+import BehaviorsEntity from "./behaviors.entity";
 import MoveBehavior from "./behaviors/move.behavior";
 import { E_MOVE_DIRECTION } from "src/types/entities/behaviors/move.types";
+import { E_BEHAVIOR_PROPERTY, E_BEHAVIORS } from "src/types/entities/behaviors/behavior.enum";
+import { TActiveBehavior } from "src/types/entities/behaviors/behavior.types";
+
 
 export default class Ball2D implements IBallEntity {
   public readonly contextId: IBallEntity['contextId'] = E_RENDERING_CONTEXT_ID.DIMENSIONAL2;
@@ -12,7 +15,7 @@ export default class Ball2D implements IBallEntity {
   public color: IBallEntity['color'];
   
   public behaviors: BehaviorsEntity = new BehaviorsEntity();
-  public activeBehaviors: Map<E_BEHAVIORS, E_MOVE_DIRECTION> = new Map();
+  public activeBehaviors: Map<E_BEHAVIORS, TActiveBehavior<E_BEHAVIORS>> = new Map();
 
   private _ctx: CanvasRenderingContext2D | null = null;
 
@@ -27,7 +30,15 @@ export default class Ball2D implements IBallEntity {
     this._ctx = ctx;
   }
 
-  reduce(options: IUpdateBallOptions): void {
+  setAvailableBehavior(behavior: E_BEHAVIOR_PROPERTY) {
+    this.behaviors.reduce(behavior, true);
+  }
+
+  unsetAvailableBehavior(behavior: E_BEHAVIOR_PROPERTY) {
+    this.behaviors.reduce(behavior, false);
+  }
+
+  reduceOptions(options: IUpdateBallOptions): void {
     this.position = {
       ...this.position,
       ...options.position
@@ -40,20 +51,46 @@ export default class Ball2D implements IBallEntity {
     this.radius = options.radius || this.radius;
   }
 
-  takeBehavior(behavior: TBehaviorProperty): void {
+  getActiveBehavior<Behavior extends E_BEHAVIORS>(behavior: Behavior) {
+    return this.activeBehaviors.get(behavior) as TActiveBehavior<Behavior>;
+  }
+
+  setActiveBehavior<Behavior extends E_BEHAVIORS>(behavior: Behavior) {
+    const maxOrder = Array.from(this.activeBehaviors.entries()).reduce((prev, curr) => {
+      if (curr[1]?.order === undefined) return prev; 
+      return (prev < curr[1].order) ? curr[1].order : prev;
+    }, 0);
+    const order = maxOrder + 1;
+    const activeBehaviorValue: TActiveBehavior<Behavior> = {
+      token: behavior,
+      order, 
+    };
+    this.activeBehaviors.set(behavior, activeBehaviorValue);
+  }
+
+  takeBehavior(behavior: E_BEHAVIOR_PROPERTY): void {
     switch(behavior) {
-      case 'isMoved':
-        if (this.activeBehaviors.has(E_BEHAVIORS.MOVED)) {
-          const direction = this.activeBehaviors.get(E_BEHAVIORS.MOVED);
-          if (!direction) {
-            throw new Error(`Invalid direction: ${direction}!`);
-          }
-          this.move(direction);
-        }
+      case E_BEHAVIOR_PROPERTY.MOVED:
+        this.takeMoveBehavior();
         break;
       default:
         throw new Error('Invalid behavior');
     }
+  }
+
+  takeMoveBehavior() {
+    if (!this.activeBehaviors.has(E_BEHAVIORS.MOVED)) return;
+    const activeBehavior = this.getActiveBehavior(E_BEHAVIORS.MOVED);
+    if (!activeBehavior) return;
+    const { token } = activeBehavior;
+    if (!token) {
+      throw new Error(`Invalid token: ${token}!`);
+    }
+    const { direction } = this.behaviors.getBehaviorOptions(token);
+    if (!direction) {
+      throw new Error(`Invalid direction: ${direction}!`);
+    }
+    this.move(direction);
   }
 
   move(direction: E_MOVE_DIRECTION): void {
@@ -64,7 +101,7 @@ export default class Ball2D implements IBallEntity {
     });
     const moveLine = moveCalculator.calculate();
     const position = moveLine.end;
-    this.reduce({
+    this.reduceOptions({
       position,
     });
   }
@@ -72,7 +109,7 @@ export default class Ball2D implements IBallEntity {
   update(): void {
     const behaviors = Object.entries(this.behaviors)
       .filter(([_, hasBehavior]) => hasBehavior)
-      .map(([behavior, _]) => behavior as TBehaviorProperty);
+      .map(([behavior, _]) => behavior);
     behaviors.forEach(this.takeBehavior.bind(this));
   }
 
@@ -84,4 +121,5 @@ export default class Ball2D implements IBallEntity {
     this._ctx.fill();
     this._ctx.closePath();
   }
+  
 }

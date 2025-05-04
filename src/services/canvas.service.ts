@@ -11,13 +11,6 @@ export class CanvasService {
   constructor(
     private configService: ConfigService,
   ) {
-    // for (let context of Object.values(E_RENDERING_CONTEXT_ID)) {
-    //   if (this.ctxMap.has(context)) continue;
-    //   this.ctxMap.set(
-    //     context,
-    //     this.getContextById(context)
-    //   );
-    // }
     const context = this.configService.context;
     this.ctxMap.set(
       context,
@@ -40,5 +33,17 @@ export class CanvasService {
     const ctx = this.getCanvas().getContext(context) as TGetRenderingContext<Context> | null;
     if (!ctx) throw new Error(`Context (${context}) is not available`);
     return ctx;
+  }
+
+  public clear<Context extends E_RENDERING_CONTEXT_ID>(context: Context) {
+    const ctx = this.getContext(context);
+    if (context === E_RENDERING_CONTEXT_ID.DIMENSIONAL2) {
+      (ctx as TGetRenderingContext<E_RENDERING_CONTEXT_ID.DIMENSIONAL2>).clearRect(0, 0, this.getCanvas().width, this.getCanvas().height);
+    } else {
+      (ctx as TGetRenderingContext<E_RENDERING_CONTEXT_ID.WEBGL>).clearColor(1, 0.5, 0.7, 1);
+      (ctx as TGetRenderingContext<E_RENDERING_CONTEXT_ID.WEBGL>).clear(
+        (ctx as TGetRenderingContext<E_RENDERING_CONTEXT_ID.WEBGL>).COLOR_BUFFER_BIT
+      );
+    }
   }
 }

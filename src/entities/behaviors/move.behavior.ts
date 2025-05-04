@@ -1,18 +1,19 @@
-import { E_MOVE_DIRECTION, IMoveParams } from "src/types/entities/behaviors/move.types";
+import { E_MOVE_DIRECTION, IMoveParams, TMoveCalculatorMap } from "src/types/entities/behaviors/move.types";
 import { E_DIMENSIONAL_ID } from "src/types/rendering-context.enum";
 import MoveCalculator2d from "./move-calculator2d";
+import MoveCalculator3d from "./move-calculator3d";
 
 
 export default class MoveBehavior<Dimension extends E_DIMENSIONAL_ID> {
-  private calculator;
+  private calculator: TMoveCalculatorMap[Dimension];
 
   constructor(private dimension: Dimension) {
-    if (this.dimension === E_DIMENSIONAL_ID.DIMENSIONAL3) {
-      throw new Error('3d not implemented yet');
-    }
     switch (this.dimension) {
       case E_DIMENSIONAL_ID.DIMENSIONAL2:
-        this.calculator = MoveCalculator2d;
+        this.calculator = MoveCalculator2d as TMoveCalculatorMap[Dimension];
+        break;
+      case E_DIMENSIONAL_ID.DIMENSIONAL3:
+        this.calculator = MoveCalculator3d as TMoveCalculatorMap[Dimension];
         break;
       default:
         throw new Error('Invalid dimension');

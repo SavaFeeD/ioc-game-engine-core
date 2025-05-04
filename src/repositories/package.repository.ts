@@ -47,7 +47,7 @@ export class PackageRepository {
   public findPackageById<Context extends E_RENDERING_CONTEXT_ID>(id: string): IPackage<Context, IEntity<Context>> | null {
     let result: IPackage<Context, IEntity<Context>> | null = null;
     for (let [context, packages] of this.packages.entries()) {
-      const pkg = packages.find((pkg) => {});
+      const pkg = packages.find((pkg) => pkg?.id === id);
       if (pkg) {
         if (!this.treeContextById.has(id)) {
           this.treeContextById.set(id, context);
