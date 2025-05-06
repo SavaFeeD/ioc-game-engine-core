@@ -1,5 +1,5 @@
 import Case from "test/core/base/case";
-import { Ball2D, Core, E_CONTOROLLERS_TOKENS, container } from "@src";
+import { Ball2D, Core, E_BEHAVIORS, E_CONTOROLLERS_TOKENS, container } from "@src";
 import HTMLFabric from "test/core/base/html-fabric";
 import { E_RENDERING_CONTEXT_ID } from "src/types/rendering-context.enum";
 
@@ -38,8 +38,9 @@ export default function entityCase() {
       color: '#000',
     });
 
+    ball2d.setActiveBehavior(E_BEHAVIORS.MOVED);
+
     console.log('ball2d.behaviors:', ball2d.behaviors);
-    console.log('ball2d.activeBehaviors:', ball2d.activeBehaviors);
 
     gameController.addEntity(ball2d);
     // gameController.run(E_RENDERING_CONTEXT_ID.DIMENSIONAL2);

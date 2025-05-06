@@ -4,7 +4,7 @@ import BehaviorsEntity from "./behaviors.entity";
 import MoveBehavior from "./behaviors/move.behavior";
 import { E_MOVE_DIRECTION } from "src/types/entities/behaviors/move.types";
 import { E_BEHAVIOR_PROPERTY, E_BEHAVIORS } from "src/types/entities/behaviors/behavior.enum";
-import { TActiveBehavior } from "src/types/entities/behaviors/behavior.types";
+import { TActiveBehavior, TBehaviorOptions } from "src/types/entities/behaviors/behavior.types";
 
 
 export default class Ball2D implements IBallEntity {
@@ -15,7 +15,6 @@ export default class Ball2D implements IBallEntity {
   public color: IBallEntity['color'];
   
   public behaviors: BehaviorsEntity = new BehaviorsEntity();
-  public activeBehaviors: Map<E_BEHAVIORS, TActiveBehavior<E_BEHAVIORS>> = new Map();
 
   private _ctx: CanvasRenderingContext2D | null = null;
 
@@ -52,48 +51,29 @@ export default class Ball2D implements IBallEntity {
   }
 
   getActiveBehavior<Behavior extends E_BEHAVIORS>(behavior: Behavior) {
-    return this.activeBehaviors.get(behavior) as TActiveBehavior<Behavior>;
+    return this.behaviors.getActiveBehavior(behavior);
   }
 
   setActiveBehavior<Behavior extends E_BEHAVIORS>(behavior: Behavior) {
-    const maxOrder = Array.from(this.activeBehaviors.entries()).reduce((prev, curr) => {
-      if (curr[1]?.order === undefined) return prev; 
-      return (prev < curr[1].order) ? curr[1].order : prev;
-    }, 0);
-    const order = maxOrder + 1;
-    const activeBehaviorValue: TActiveBehavior<Behavior> = {
-      token: behavior,
-      order, 
-    };
-    this.activeBehaviors.set(behavior, activeBehaviorValue);
+    this.behaviors.setActiveBehavior(behavior);
   }
 
-  takeBehavior(behavior: E_BEHAVIOR_PROPERTY): void {
-    switch(behavior) {
-      case E_BEHAVIOR_PROPERTY.MOVED:
-        this.takeMoveBehavior();
+  takeBehavior(behaviorProperty: E_BEHAVIOR_PROPERTY): void {
+    const behavior = this.behaviors.getBehaviorTokenByPropertyToken(behaviorProperty);
+    if (!this.behaviors.validateBehavior(behavior)) return;
+    const token = this.behaviors.getActiveBehaviorToken(behavior);
+    const behaviorOptions = this.behaviors.getActiveBehaviorOptions(token);
+    switch (behavior) {
+      case E_BEHAVIORS.MOVED:
+        this.move(behaviorOptions as TBehaviorOptions<E_BEHAVIORS.MOVED>);
         break;
       default:
-        throw new Error('Invalid behavior');
+        break;
     }
   }
 
-  takeMoveBehavior() {
-    if (!this.activeBehaviors.has(E_BEHAVIORS.MOVED)) return;
-    const activeBehavior = this.getActiveBehavior(E_BEHAVIORS.MOVED);
-    if (!activeBehavior) return;
-    const { token } = activeBehavior;
-    if (!token) {
-      throw new Error(`Invalid token: ${token}!`);
-    }
-    const { direction } = this.behaviors.getBehaviorOptions(token);
-    if (!direction) {
-      throw new Error(`Invalid direction: ${direction}!`);
-    }
-    this.move(direction);
-  }
-
-  move(direction: E_MOVE_DIRECTION): void {
+  move(behaviorOptions: TBehaviorOptions<E_BEHAVIORS.MOVED>): void {
+    const { direction } = behaviorOptions;
     const moveBehavior = new MoveBehavior(E_DIMENSIONAL_ID.DIMENSIONAL2);
     const moveCalculator = moveBehavior.move(direction, {
       position: this.position,

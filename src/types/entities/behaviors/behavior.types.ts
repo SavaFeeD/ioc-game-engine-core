@@ -26,14 +26,7 @@ export type TBehaviorOptionsMap = {
   };
 }
 
-export type TBehaviorOptions = {
-  [E_BEHAVIORS.MOVED]: TBehaviorOptionsMap[E_BEHAVIORS.MOVED];
-  [E_BEHAVIORS.ROTATED]: TBehaviorOptionsMap[E_BEHAVIORS.ROTATED];
-  [E_BEHAVIORS.ANIMATED]: TBehaviorOptionsMap[E_BEHAVIORS.ANIMATED];
-  [E_BEHAVIORS.SCALED]: TBehaviorOptionsMap[E_BEHAVIORS.SCALED];
-  [E_BEHAVIORS.TRANSFORMED]: TBehaviorOptionsMap[E_BEHAVIORS.TRANSFORMED];
-  [E_BEHAVIORS.TRANSLATED]: TBehaviorOptionsMap[E_BEHAVIORS.TRANSLATED];
-}
+export type TBehaviorOptions<Behavior extends E_BEHAVIORS> = TBehaviorOptionsMap[Behavior];
 
 export type TActiveBehavior<Behavior extends E_BEHAVIORS> = {
   token: Behavior;
