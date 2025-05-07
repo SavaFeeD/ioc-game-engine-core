@@ -1,4 +1,4 @@
-import { Point2d } from "./point2d.primitive";
+import { Point2d } from "@primitives/point2d.primitive";
 
 export class Line2d {
   constructor(

@@ -1,7 +1,7 @@
 import Case from "test/core/base/case";
-import { Core, container } from "@src";
 import HTMLFabric from "test/core/base/html-fabric";
-import { E_RENDERING_CONTEXT_ID } from "src/types/rendering-context.enum";
+import { Core, container } from "#src";
+import { E_RENDERING_CONTEXT_ID } from "#types";
 
 
 export default function coreCase() {

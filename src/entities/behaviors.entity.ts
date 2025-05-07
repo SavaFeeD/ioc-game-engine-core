@@ -1,5 +1,9 @@
-import { E_BEHAVIOR_PROPERTY, E_BEHAVIORS } from "src/types/entities/behaviors/behavior.enum";
-import { TActiveBehavior, TBehaviorOptions } from "src/types/entities/behaviors/behavior.types";
+import {
+  E_BEHAVIOR_PROPERTY,
+  E_BEHAVIORS,
+  TActiveBehavior,
+  TBehaviorOptions,
+} from "#types";
 
 
 export default class BehaviorsEntity {

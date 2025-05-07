@@ -1,11 +1,13 @@
 import { Injectable } from "@savafeed/module-manager";
-import { ConfigService } from "./config.service";
-import { TGetRenderingContext } from "src/types/rendering-context.types";
-import { E_RENDERING_CONTEXT_ID } from "src/types/rendering-context.enum";
+import ConfigService from "@services/config.service";
+import {
+  TGetRenderingContext,
+  E_RENDERING_CONTEXT_ID,
+} from "#types";
 
 
 @Injectable()
-export class CanvasService {
+export default class CanvasService {
   private ctxMap: Map<E_RENDERING_CONTEXT_ID, TGetRenderingContext<E_RENDERING_CONTEXT_ID>> = new Map();
   
   constructor(

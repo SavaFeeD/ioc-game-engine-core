@@ -1,10 +1,17 @@
-import { IBallEntity, IInitialBallEntity, IUpdateBallOptions } from "src/types/entities/ball2d.types";
-import { E_DIMENSIONAL_ID, E_RENDERING_CONTEXT_ID } from "src/types/rendering-context.enum";
-import BehaviorsEntity from "./behaviors.entity";
-import MoveBehavior from "./behaviors/move.behavior";
-import { E_MOVE_DIRECTION } from "src/types/entities/behaviors/move.types";
-import { E_BEHAVIOR_PROPERTY, E_BEHAVIORS } from "src/types/entities/behaviors/behavior.enum";
-import { TActiveBehavior, TBehaviorOptions } from "src/types/entities/behaviors/behavior.types";
+import {
+  IBallEntity,
+  IInitialBallEntity,
+  IUpdateBallOptions,
+  TBehaviorOptions,
+  E_BEHAVIOR_PROPERTY,
+  E_BEHAVIORS,
+  E_DIMENSIONAL_ID,
+  E_RENDERING_CONTEXT_ID,
+} from "#types";
+import {
+  MoveBehavior,
+  BehaviorsEntity,
+} from "#src";
 
 
 export default class Ball2D implements IBallEntity {

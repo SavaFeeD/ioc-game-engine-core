@@ -1,6 +1,8 @@
-import { TGetRenderingContext } from "./rendering-context.types";
-import { E_RENDERING_CONTEXT_ID } from "./rendering-context.enum";
-import BehaviorsEntity from "src/entities/behaviors.entity";
+import {
+  E_RENDERING_CONTEXT_ID,
+  TGetRenderingContext,
+} from "#types";
+import { BehaviorsEntity } from "#src";
 
 export interface IEntity<Context extends E_RENDERING_CONTEXT_ID> {
   contextId: Context;

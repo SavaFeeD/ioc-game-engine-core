@@ -1,12 +1,14 @@
 import { Injectable } from "@savafeed/module-manager";
-import { IEntity } from "src/types/entity.interface";
-import { TPackageEntityByContextId } from "src/types/package-context.types";
-import { IPackage } from "src/types/package.interface";
-import { E_RENDERING_CONTEXT_ID } from "src/types/rendering-context.enum";
+import {
+  TPackageEntityByContextId,
+  IEntity,
+  IPackage,
+  E_RENDERING_CONTEXT_ID,
+} from "#types";
 
 
 @Injectable()
-export class PackageRepository {
+export default class PackageRepository {
   private packages: Map<E_RENDERING_CONTEXT_ID, TPackageEntityByContextId<E_RENDERING_CONTEXT_ID>[]> = new Map();
   private treeContextById: Map<string, E_RENDERING_CONTEXT_ID> = new Map();
   

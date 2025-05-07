@@ -1,7 +1,7 @@
 import Case from "test/core/base/case";
-import { Ball2D, Core, E_BEHAVIORS, E_CONTOROLLERS_TOKENS, container } from "@src";
 import HTMLFabric from "test/core/base/html-fabric";
-import { E_RENDERING_CONTEXT_ID } from "src/types/rendering-context.enum";
+import { Ball2D, Core, container } from "#src";
+import { E_BEHAVIORS, E_CONTOROLLERS_TOKENS, E_RENDERING_CONTEXT_ID } from '#types';
 
 
 export default function entityCase() {

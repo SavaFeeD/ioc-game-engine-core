@@ -1,9 +1,12 @@
-import { Line2d } from "src/primitives/line2d.primitive";
-import { Point2d } from "src/primitives/point2d.primitive";
-import { E_MOVE_DIRECTION } from "src/types/entities/behaviors/move.types";
-import { IPoint2d } from "src/types/entities/point2d.types";
+import {
+  E_MOVE_DIRECTION,
+  IPoint2d,
+} from "#types";
+import { Line2d } from "@primitives/line2d.primitive";
+import { Point2d } from "@primitives/point2d.primitive";
 
-export default class MoveCalculator2d {
+
+export default class MoveCalculator3d {
   constructor(
     private position: IPoint2d,
     private velocity: IPoint2d,

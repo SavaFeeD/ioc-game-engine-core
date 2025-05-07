@@ -1,7 +1,10 @@
-import { E_MOVE_DIRECTION, IMoveParams, TMoveCalculatorMap } from "src/types/entities/behaviors/move.types";
-import { E_DIMENSIONAL_ID } from "src/types/rendering-context.enum";
-import MoveCalculator2d from "./move-calculator2d";
-import MoveCalculator3d from "./move-calculator3d";
+import {
+  E_DIMENSIONAL_ID,
+  E_MOVE_DIRECTION,
+  IMoveParams,
+  TMoveCalculatorMap,
+} from "#types";
+import { MoveCalculator2d, MoveCalculator3d } from "#src";
 
 
 export default class MoveBehavior<Dimension extends E_DIMENSIONAL_ID> {

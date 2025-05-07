@@ -1,12 +1,14 @@
 import { Injectable } from "@savafeed/module-manager";
-import { PackageRepository } from "src/repositories/package.repository";
-import { E_RENDERING_CONTEXT_ID } from "src/types";
-import { IEntity } from "src/types/entity.interface";
-import { IPackage } from "src/types/package.interface";
+import PackageRepository from "@repositories/package.repository";
+import { 
+  IPackage,
+  IEntity,
+  E_RENDERING_CONTEXT_ID,
+ } from "#types";
 
 
 @Injectable()
-export class RenderingService {
+export default class RenderingService {
   private renderingPackages: IPackage<E_RENDERING_CONTEXT_ID, IEntity<E_RENDERING_CONTEXT_ID>>[] = [];
 
   constructor(

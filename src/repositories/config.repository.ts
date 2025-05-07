@@ -1,9 +1,9 @@
 import { Injectable } from "@savafeed/module-manager";
-import { ICoreConfig } from "src/types/config.interface";
+import { ICoreConfig } from "#types";
 
 
 @Injectable()
-export class ConfigRepository {
+export default class ConfigRepository {
   private CONFIG: ICoreConfig | null = null;
 
   public get config() {

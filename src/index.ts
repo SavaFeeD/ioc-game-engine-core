@@ -1,39 +1,20 @@
 import { container } from '@savafeed/module-manager';
 import { Core } from './core';
-import {
-  // @enums
-  E_BEHAVIORS,
-  E_DIMENSIONAL_ID,
-  E_MOVE_DIRECTION,
-  E_RENDERING_CONTEXT_ID,
-  // @token.enums
-  E_CONTOROLLERS_TOKENS,
-  E_CORE_TOKENS,
-  // @types
-  TControllerMap,
-  TControllerMapper,
-  // @controller.abstracts
-  AbstractGameController,
-} from './types';
-import Ball2D from './entities/ball2d.entity';
+import Ball2D from '@entities/ball2d.entity';
+import BehaviorsEntity from '@entities/behaviors.entity';
+import MoveCalculator2d from '@behaviors/move-calculator2d';
+import MoveCalculator3d from '@behaviors/move-calculator3d';
+import MoveBehavior from '@behaviors/move.behavior';
 
 
 export {
+  // @core
   Core,
   container,
-  // @enums
-  E_BEHAVIORS,
-  E_DIMENSIONAL_ID,
-  E_MOVE_DIRECTION,
-  E_RENDERING_CONTEXT_ID,
-  // @token.enums
-  E_CONTOROLLERS_TOKENS,
-  E_CORE_TOKENS,
-  // @types
-  TControllerMap,
-  TControllerMapper,
-  // @controller.abstracts
-  AbstractGameController,
   // @entities
+  BehaviorsEntity,
+  MoveBehavior,
   Ball2D,
+  MoveCalculator2d,
+  MoveCalculator3d,
 };

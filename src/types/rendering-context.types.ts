@@ -1,4 +1,12 @@
-import { E_DIMENSIONAL_ID, E_RENDERING_CONTEXT_ID } from "./rendering-context.enum";
+export enum E_RENDERING_CONTEXT_ID {
+  DIMENSIONAL2 = '2d',
+  WEBGL = 'webgl',
+};
+
+export enum E_DIMENSIONAL_ID {
+  DIMENSIONAL2 = E_RENDERING_CONTEXT_ID.DIMENSIONAL2,
+  DIMENSIONAL3 = E_RENDERING_CONTEXT_ID.WEBGL,
+};
 
 export type TRenderingContextMap = {
   [E_RENDERING_CONTEXT_ID.DIMENSIONAL2]: CanvasRenderingContext2D,

@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-
     "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "Node",
@@ -22,7 +21,15 @@
     "allowJs": true,
     "checkJs": false,
     "paths": {
-      "@src": ["src/index"]
+      "#src": ["src/index"],
+      "#types": ["src/types/index"],
+      "@entities/*": ["src/entities/*"],
+      "@controllers/*": ["src/controllers/*"],
+      "@repositories/*": ["src/repositories/*"],
+      "@primitives/*": ["src/primitives/*"],
+      "@utils/*": ["src/utils/*"],
+      "@services/*": ["src/services/*"],
+      "@behaviors/*": ["src/behaviors/*"]
     }
   },
   "include": [

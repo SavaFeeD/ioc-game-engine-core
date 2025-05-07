@@ -1,5 +1,22 @@
-import { E_BEHAVIORS } from "./behavior.enum";
-import { E_MOVE_DIRECTION } from "./move.types";
+import { E_MOVE_DIRECTION } from "#types";
+
+export enum E_BEHAVIOR_PROPERTY {
+  MOVED = 'isMoved',
+  ROTATED = 'isRotated',
+  SCALED = 'isScaled',
+  TRANSLATED = 'isTranslated',
+  TRANSFORMED = 'isTransformed',
+  ANIMATED = 'isAnimated',
+}
+
+export enum E_BEHAVIORS {
+  MOVED = 'move',
+  ROTATED = 'rotate',
+  SCALED = 'scale',
+  TRANSLATED = 'translate',
+  TRANSFORMED = 'transforme',
+  ANIMATED = 'animate',
+};
 
 export type TBehaviorOptionsMap = {
   [E_BEHAVIORS.MOVED]: {

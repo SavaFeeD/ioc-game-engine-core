@@ -1,6 +1,9 @@
-import { IInitialPackage2DEntity, TPackage2DEntity } from "src/types/entities/package2d.types";
-import { E_RENDERING_CONTEXT_ID } from "src/types/rendering-context.enum";
-import UUID from "src/utils/uuid";
+import {
+  IInitialPackage2DEntity,
+  TPackage2DEntity,
+  E_RENDERING_CONTEXT_ID,
+} from "#types";
+import UUID from "@utils/uuid";
 
 
 export default class Package2DEntity implements TPackage2DEntity {
