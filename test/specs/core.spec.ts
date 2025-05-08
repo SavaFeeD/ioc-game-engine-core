@@ -1,6 +1,6 @@
 import Case from "test/core/base/case";
 import HTMLFabric from "test/core/base/html-fabric";
-import { Core, container } from "#src";
+import { Core } from "#src";
 import { E_RENDERING_CONTEXT_ID } from "#types";
 
 
@@ -16,7 +16,7 @@ export default function coreCase() {
     };
 
     const core = new Core(
-      container,
+      Core.BASE_IOC_CONTAINER,
       config,
     );
 

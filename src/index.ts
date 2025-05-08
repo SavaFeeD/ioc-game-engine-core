@@ -16,3 +16,4 @@ export {
   MoveCalculator2d,
   MoveCalculator3d,
 };
+export * from "#shared.types";
