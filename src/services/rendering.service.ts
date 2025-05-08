@@ -24,6 +24,8 @@ export default class RenderingService {
 
   renderFrame() {
     for (const packageEntity of this.renderingPackages) {
+      console.log('packageEntity', packageEntity);
+      console.log('!packageEntity.estimatedRendering', !packageEntity.estimatedRendering);
       if (!packageEntity.estimatedRendering) continue;
       packageEntity.update();
       packageEntity.render();
