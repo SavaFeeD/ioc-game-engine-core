@@ -1,15 +1,17 @@
 import { Container, container } from "@savafeed/module-manager";
 import { CoreModule } from "./core.module";
-import {
-  E_CONTOROLLERS_TOKENS,
-  E_CORE_TOKENS,
+import type {
   ICoreConfig,
   TControllerMapper,
 } from "./types";
+import {
+  E_CONTOROLLERS_TOKENS,
+  E_CORE_TOKENS,
+} from "#shared.types";
 
 
 export class Core {
-  private static baseContainer = container;
+  public static BASE_IOC_CONTAINER = container;
 
   constructor(
     private appContainer: Container,
@@ -24,10 +26,6 @@ export class Core {
   
   public getController<TOKEN extends E_CONTOROLLERS_TOKENS>(token: E_CONTOROLLERS_TOKENS): TControllerMapper<TOKEN> | undefined {
     return this.appContainer.getController<TControllerMapper<TOKEN>>(token);
-  }
-
-  public getBaseContainer() {
-    return Core.baseContainer;
   }
 
   public test() {
