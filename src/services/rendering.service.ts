@@ -38,6 +38,7 @@ export default class RenderingService {
       if (b.renderOrder === undefined) return -1;
       return a.renderOrder - b.renderOrder;
     });
+    console.log('sortedPackages', sortedPackages);
     return (sortedPackages as unknown) as IPackage<E_RENDERING_CONTEXT_ID, IEntity<E_RENDERING_CONTEXT_ID>>[];
   }
 }
