@@ -17,13 +17,12 @@ import RenderingService from "@services/rendering.service";
 export default class GameController implements AbstractGameController {
   constructor(
     private drawService: DrawService,
-    private packageRepository: PackageRepository,
     private renderingService: RenderingService,
     private canvasService: CanvasService,
   ) {}
 
   public test() {
-    [this.drawService, this.packageRepository, this.renderingService].forEach(service => {
+    [this.drawService, this.renderingService].forEach(service => {
       if (!service) {
         throw new Error('[GameController] Service is not defined!');
       }
@@ -32,7 +31,7 @@ export default class GameController implements AbstractGameController {
 
   public addEntity(entity: IEntity<any>) {
     const drawPackage = this.drawService.package(entity);
-    this.packageRepository.addPackage(drawPackage);
+    this.renderingService.addPackage(drawPackage);
   }
 
   public run(context: E_RENDERING_CONTEXT_ID) {

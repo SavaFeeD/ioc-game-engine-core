@@ -3,6 +3,7 @@ import PackageRepository from "@repositories/package.repository";
 import type { 
   IPackage,
   IEntity,
+  TPackageEntityByContextId,
 } from "#types";
 import {
   E_RENDERING_CONTEXT_ID,
@@ -16,6 +17,10 @@ export default class RenderingService {
   constructor(
     private packageRepository: PackageRepository,
   ) {}
+
+  addPackage(pkg: TPackageEntityByContextId<E_RENDERING_CONTEXT_ID>) {
+    this.packageRepository.addPackage(pkg);
+  }
 
   updateRenderingPackages<Context extends E_RENDERING_CONTEXT_ID>(context: Context) {
     const packages = this.packageRepository.getPackagesByContext(context);

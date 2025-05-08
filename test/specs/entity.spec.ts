@@ -1,6 +1,6 @@
 import Case from "test/core/base/case";
 import HTMLFabric from "test/core/base/html-fabric";
-import { Ball2D, Core, container } from "#src";
+import { Ball2D, Core } from "#src";
 import { E_BEHAVIORS, E_CONTOROLLERS_TOKENS, E_RENDERING_CONTEXT_ID } from '#types';
 
 
@@ -16,7 +16,7 @@ export default function entityCase() {
     };
 
     const core = new Core(
-      container,
+      Core.BASE_IOC_CONTAINER,
       config,
     );
 
