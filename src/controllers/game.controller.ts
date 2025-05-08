@@ -7,7 +7,6 @@ import {
   E_CONTOROLLERS_TOKENS,
   E_RENDERING_CONTEXT_ID,
 } from "#shared.types";
-import PackageRepository from "@repositories/package.repository";
 import CanvasService from "@services/canvas.service";
 import DrawService from "@services/draw.service";
 import RenderingService from "@services/rendering.service";
