@@ -94,6 +94,7 @@ export default class Ball2D implements IBallEntity {
   }
 
   update(): void {
+    console.log('this.behaviors.properties', this.behaviors.properties);
     const behaviors = (Object.entries(this.behaviors.properties) as [E_BEHAVIOR_PROPERTY, boolean][])
       .filter(([_, hasBehavior]) => hasBehavior)
       .map(([behavior, _]) => behavior);
