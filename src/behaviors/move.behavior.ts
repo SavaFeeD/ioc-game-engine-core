@@ -1,10 +1,13 @@
-import {
-  E_DIMENSIONAL_ID,
-  E_MOVE_DIRECTION,
+import type {
   IMoveParams,
   TMoveCalculatorMap,
 } from "#types";
-import { MoveCalculator2d, MoveCalculator3d } from "#src";
+import {
+  E_DIMENSIONAL_ID,
+  E_MOVE_DIRECTION,
+} from "#shared.types";
+import MoveCalculator2d from "@behaviors/move-calculator2d";
+import MoveCalculator3d from "@behaviors/move-calculator3d";
 
 
 export default class MoveBehavior<Dimension extends E_DIMENSIONAL_ID> {

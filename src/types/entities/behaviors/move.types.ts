@@ -1,5 +1,13 @@
-import { E_DIMENSIONAL_ID, IPoint2d, IPoint3d } from "#types";
-import { MoveCalculator2d, MoveCalculator3d } from "#src";
+import type {
+  IPoint2d,
+  IPoint3d,
+} from "#types";
+import {
+  MoveCalculator2d,
+  MoveCalculator3d,
+} from "#src";
+import { E_DIMENSIONAL_ID } from "../../rendering-context.types";
+
 
 export type TPositionDimensionalMap = {
   [E_DIMENSIONAL_ID.DIMENSIONAL2]: IPoint2d,

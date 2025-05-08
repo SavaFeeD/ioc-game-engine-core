@@ -1,7 +1,9 @@
-import {
-  E_MOVE_DIRECTION,
+import type {
   IPoint2d,
 } from "#types";
+import {
+  E_MOVE_DIRECTION,
+} from "#shared.types";
 import { Line2d } from "@primitives/line2d.primitive";
 import { Point2d } from "@primitives/point2d.primitive";
 

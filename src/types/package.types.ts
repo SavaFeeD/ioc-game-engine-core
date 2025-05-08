@@ -1,8 +1,9 @@
-import {
+import type {
   IEntity,
   TPackage2DEntity,
-  E_RENDERING_CONTEXT_ID,
 } from "#types";
+import { E_RENDERING_CONTEXT_ID } from "./rendering-context.types";
+
 
 export type TPackageContextMap = {
   [E_RENDERING_CONTEXT_ID.DIMENSIONAL2]: TPackage2DEntity;

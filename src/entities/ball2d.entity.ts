@@ -1,17 +1,17 @@
-import {
+import type {
   IBallEntity,
   IInitialBallEntity,
   IUpdateBallOptions,
   TBehaviorOptions,
+} from "#types";
+import {
   E_BEHAVIOR_PROPERTY,
   E_BEHAVIORS,
   E_DIMENSIONAL_ID,
   E_RENDERING_CONTEXT_ID,
-} from "#types";
-import {
-  MoveBehavior,
-  BehaviorsEntity,
-} from "#src";
+} from "#shared.types";
+import MoveBehavior from "@behaviors/move.behavior";
+import BehaviorsEntity from "@entities/behaviors.entity";
 
 
 export default class Ball2D implements IBallEntity {

@@ -23,6 +23,7 @@
     "paths": {
       "#src": ["src/index"],
       "#types": ["src/types/index"],
+      "#shared.types": ["src/types/index.shared"],
       "@entities/*": ["src/entities/*"],
       "@controllers/*": ["src/controllers/*"],
       "@repositories/*": ["src/repositories/*"],

@@ -1,7 +1,7 @@
-import {
-  E_RENDERING_CONTEXT_ID,
+import type {
   IEntity,
 } from "#types";
+import { E_RENDERING_CONTEXT_ID } from "../rendering-context.types";
 
 
 export interface IBallEntity extends IEntity<E_RENDERING_CONTEXT_ID.DIMENSIONAL2> {

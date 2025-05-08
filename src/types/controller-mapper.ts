@@ -1,4 +1,8 @@
-import { AbstractGameController, E_CONTOROLLERS_TOKENS } from "#types";
+import type {
+  AbstractGameController,
+} from "#types";
+import { E_CONTOROLLERS_TOKENS } from "./tokens.enum";
+
 
 export type TControllerMap = {
   [E_CONTOROLLERS_TOKENS.GAME]: AbstractGameController;

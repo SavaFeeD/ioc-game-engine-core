@@ -1,10 +1,11 @@
 import { Injectable } from "@savafeed/module-manager";
-import {
-  E_RENDERING_CONTEXT_ID,
+import type {
   IEntity,
   TPackageEntityByContextId,
 } from "#types";
-import {  } from "src/types/entity.interface";
+import {
+  E_RENDERING_CONTEXT_ID,
+} from "#shared.types";
 import CanvasService from "@services/canvas.service";
 import Package2DEntity from "@entities/package2d.entity";
 

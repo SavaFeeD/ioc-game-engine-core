@@ -1,9 +1,11 @@
-import {
+import type {
   IInitialPackage2DEntity,
   TPackage2DEntity,
-  E_RENDERING_CONTEXT_ID,
 } from "#types";
 import UUID from "@utils/uuid";
+import {
+  E_RENDERING_CONTEXT_ID,
+} from "#shared.types";
 
 
 export default class Package2DEntity implements TPackage2DEntity {

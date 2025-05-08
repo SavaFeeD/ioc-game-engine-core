@@ -74,7 +74,7 @@ export default [
     ]
   },
   {
-    input: 'src/index.ts',
+    input: 'src/types/index.ts',
     output: { file: 'dist/index.d.ts', format: 'es' },
     plugins: [
       alias({
@@ -86,6 +86,10 @@ export default [
             value[0].replace("/*", "")
           ),
         })),
+      }),
+      resolve({
+        preferBuiltins: true,
+        extensions: [".js", ".ts", ".cts"],
       }),
       dts()
     ],

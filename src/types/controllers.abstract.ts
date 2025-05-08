@@ -1,4 +1,8 @@
-import { IEntity, E_RENDERING_CONTEXT_ID } from "#types";
+import type {
+  IEntity,
+} from "#types";
+import { E_RENDERING_CONTEXT_ID } from "./rendering-context.types";
+
 
 export abstract class AbstractGameController {
   abstract test(): void;

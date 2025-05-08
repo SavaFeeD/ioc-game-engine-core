@@ -1,4 +1,5 @@
-import { E_MOVE_DIRECTION } from "#types";
+import { E_MOVE_DIRECTION } from "./move.types";
+
 
 export enum E_BEHAVIOR_PROPERTY {
   MOVED = 'isMoved',
@@ -21,7 +22,7 @@ export enum E_BEHAVIORS {
 export type TBehaviorOptionsMap = {
   [E_BEHAVIORS.MOVED]: {
     direction: E_MOVE_DIRECTION;
-  },
+  };
   [E_BEHAVIORS.ROTATED]: {
     angle: number;
   };

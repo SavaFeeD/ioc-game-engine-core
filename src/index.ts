@@ -1,4 +1,3 @@
-import { container } from '@savafeed/module-manager';
 import { Core } from './core';
 import Ball2D from '@entities/ball2d.entity';
 import BehaviorsEntity from '@entities/behaviors.entity';
@@ -10,7 +9,6 @@ import MoveBehavior from '@behaviors/move.behavior';
 export {
   // @core
   Core,
-  container,
   // @entities
   BehaviorsEntity,
   MoveBehavior,

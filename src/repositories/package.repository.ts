@@ -1,10 +1,12 @@
 import { Injectable } from "@savafeed/module-manager";
-import {
+import type {
   TPackageEntityByContextId,
   IEntity,
   IPackage,
-  E_RENDERING_CONTEXT_ID,
 } from "#types";
+import {
+  E_RENDERING_CONTEXT_ID,
+} from "#shared.types";
 
 
 @Injectable()

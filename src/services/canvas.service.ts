@@ -1,9 +1,11 @@
 import { Injectable } from "@savafeed/module-manager";
 import ConfigService from "@services/config.service";
-import {
+import type {
   TGetRenderingContext,
-  E_RENDERING_CONTEXT_ID,
 } from "#types";
+import {
+  E_RENDERING_CONTEXT_ID,
+} from "#shared.types";
 
 
 @Injectable()

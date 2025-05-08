@@ -1,9 +1,11 @@
-import {
-  E_BEHAVIOR_PROPERTY,
-  E_BEHAVIORS,
+import type {
   TActiveBehavior,
   TBehaviorOptions,
 } from "#types";
+import {
+  E_BEHAVIOR_PROPERTY,
+  E_BEHAVIORS,
+} from "#shared.types";
 
 
 export default class BehaviorsEntity {

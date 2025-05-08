@@ -1,4 +1,5 @@
-import { E_RENDERING_CONTEXT_ID } from "#types";
+import { E_RENDERING_CONTEXT_ID } from "./rendering-context.types";
+
 
 export interface ICoreConfig {
   input: {

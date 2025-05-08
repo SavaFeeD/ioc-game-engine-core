@@ -1,9 +1,11 @@
 import { Inject, Injectable } from "@savafeed/module-manager";
 import ConfigRepository from "@repositories/config.repository";
-import {
+import type {
   ICoreConfig,
-  E_CORE_TOKENS,
 } from "#types";
+import {
+  E_CORE_TOKENS,
+} from "#shared.types";
 
 
 @Injectable()

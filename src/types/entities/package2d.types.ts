@@ -1,8 +1,9 @@
-import {
-  E_RENDERING_CONTEXT_ID,
+import type {
   IEntity,
   IPackage,
 } from "#types";
+import { E_RENDERING_CONTEXT_ID } from "../rendering-context.types";
+
 
 export type TPackage2DEntity = IPackage<E_RENDERING_CONTEXT_ID.DIMENSIONAL2, IEntity<E_RENDERING_CONTEXT_ID.DIMENSIONAL2>>;
 
