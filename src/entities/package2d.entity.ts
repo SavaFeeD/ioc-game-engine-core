@@ -20,10 +20,10 @@ export default class Package2DEntity implements TPackage2DEntity {
   }
 
   get update() {
-    return this.entity.update;
+    return this.entity.update.bind(this.entity);
   }
 
   get render() {
-    return this.entity.render;
+    return this.entity.render.bind(this.entity);
   }
 }
