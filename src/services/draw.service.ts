@@ -30,7 +30,7 @@ export default class DrawService {
     const ctx = this.canvasService.getContext(E_RENDERING_CONTEXT_ID.DIMENSIONAL2);
     entity.setContext(ctx);
     return new Package2DEntity({
-      entity
+      entity,
     });
   }
 

@@ -37,11 +37,11 @@ export default class Ball2D implements IBallEntity {
   }
 
   setAvailableBehavior(behavior: E_BEHAVIOR_PROPERTY) {
-    this.behaviors.reduce(behavior, true);
+    this.behaviors.reduceProperty(behavior, true);
   }
 
   unsetAvailableBehavior(behavior: E_BEHAVIOR_PROPERTY) {
-    this.behaviors.reduce(behavior, false);
+    this.behaviors.reduceProperty(behavior, false);
   }
 
   reduceOptions(options: IUpdateBallOptions): void {
@@ -94,8 +94,8 @@ export default class Ball2D implements IBallEntity {
   }
 
   update(): void {
-    console.log('this.behaviors.properties', this.behaviors.properties);
-    const behaviors = (Object.entries(this.behaviors.properties) as [E_BEHAVIOR_PROPERTY, boolean][])
+    console.log('this.behaviors.properties', this.behaviors.getAllProperties());
+    const behaviors = (Object.entries(this.behaviors.getAllProperties()) as [E_BEHAVIOR_PROPERTY, boolean][])
       .filter(([_, hasBehavior]) => hasBehavior)
       .map(([behavior, _]) => behavior);
     behaviors.forEach(this.takeBehavior.bind(this));

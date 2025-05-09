@@ -9,20 +9,28 @@ import {
 
 
 export default class BehaviorsEntity {
-  public properties = {
+  private _properties = {
     [E_BEHAVIOR_PROPERTY.MOVED]: false,
     [E_BEHAVIOR_PROPERTY.ROTATED]: false,
     [E_BEHAVIOR_PROPERTY.SCALED]: false,
     [E_BEHAVIOR_PROPERTY.TRANSLATED]: false,
     [E_BEHAVIOR_PROPERTY.TRANSFORMED]: false,
     [E_BEHAVIOR_PROPERTY.ANIMATED]: false,
-  }
+  };
   
   public activeBehaviors: Map<E_BEHAVIORS, TActiveBehavior<E_BEHAVIORS>> = new Map();
   private behaviorsOptions: Map<E_BEHAVIORS, TBehaviorOptions<E_BEHAVIORS>> = new Map();
 
-  reduce(property: E_BEHAVIOR_PROPERTY, value: boolean) {
-    this.properties[property] = value;
+  reduceProperty(property: E_BEHAVIOR_PROPERTY, value: boolean) {
+    this._properties[property] = value;
+  }
+
+  getProperty(property: E_BEHAVIOR_PROPERTY) {
+    return this._properties[property];
+  }
+
+  getAllProperties() {
+    return this._properties;
   }
 
   setBehaviorOptions(behaviorToken: E_BEHAVIORS, options: TBehaviorOptions<E_BEHAVIORS>) {
