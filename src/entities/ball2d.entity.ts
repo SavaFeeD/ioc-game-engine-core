@@ -67,6 +67,8 @@ export default class Ball2D implements IBallEntity {
 
   takeBehavior(behaviorProperty: E_BEHAVIOR_PROPERTY): void {
     const behavior = this.behaviors.getBehaviorTokenByPropertyToken(behaviorProperty);
+    console.log('behavior', behavior);
+    console.log('this.behaviors.validateBehavior(behavior)', this.behaviors.validateBehavior(behavior));
     if (!this.behaviors.validateBehavior(behavior)) return;
     const token = this.behaviors.getActiveBehaviorToken(behavior);
     const behaviorOptions = this.behaviors.getActiveBehaviorOptions(token);
@@ -97,7 +99,6 @@ export default class Ball2D implements IBallEntity {
     const behaviors = (Object.entries(this.behaviors.getAllProperties()) as [E_BEHAVIOR_PROPERTY, boolean][])
       .filter(([_, hasBehavior]) => hasBehavior)
       .map(([behavior, _]) => behavior);
-    console.log('behaviors', behaviors);
     behaviors.forEach(this.takeBehavior.bind(this));
   }
 
