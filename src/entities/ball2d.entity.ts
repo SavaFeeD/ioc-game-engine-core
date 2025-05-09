@@ -61,18 +61,19 @@ export default class Ball2D implements IBallEntity {
     return this.behaviors.getActiveBehavior(behavior);
   }
 
-  setActiveBehavior<Behavior extends E_BEHAVIORS>(behavior: Behavior) {
+  setActiveBehavior<Behavior extends E_BEHAVIORS>(behavior: Behavior, options: TBehaviorOptions<Behavior>) {
+    this.behaviors.setBehaviorOptions(behavior, options);
     this.behaviors.setActiveBehavior(behavior);
   }
 
-  takeBehavior(behaviorProperty: E_BEHAVIOR_PROPERTY): void {
-    const behavior = this.behaviors.getBehaviorTokenByPropertyToken(behaviorProperty);
-    console.log('behavior', behavior);
-    console.log('this.behaviors.validateBehavior(behavior)', this.behaviors.validateBehavior(behavior));
-    if (!this.behaviors.validateBehavior(behavior)) return;
-    const token = this.behaviors.getActiveBehaviorToken(behavior);
+  takeBehavior(behaviorPropertyToken: E_BEHAVIOR_PROPERTY): void {
+    const behaviorToken = this.behaviors.getBehaviorTokenByPropertyToken(behaviorPropertyToken);
+    console.log('behavior', behaviorToken);
+    console.log('this.behaviors.validateBehavior(behavior)', this.behaviors.validateBehavior(behaviorToken));
+    if (!this.behaviors.validateBehavior(behaviorToken)) return;
+    const token = this.behaviors.getActiveBehaviorToken(behaviorToken);
     const behaviorOptions = this.behaviors.getActiveBehaviorOptions(token);
-    switch (behavior) {
+    switch (behaviorToken) {
       case E_BEHAVIORS.MOVED:
         this.move(behaviorOptions as TBehaviorOptions<E_BEHAVIORS.MOVED>);
         break;
@@ -96,10 +97,10 @@ export default class Ball2D implements IBallEntity {
   }
 
   update(): void {
-    const behaviors = (Object.entries(this.behaviors.getAllProperties()) as [E_BEHAVIOR_PROPERTY, boolean][])
+    const behaviorPropertyToken = (Object.entries(this.behaviors.getAllProperties()) as [E_BEHAVIOR_PROPERTY, boolean][])
       .filter(([_, hasBehavior]) => hasBehavior)
-      .map(([behavior, _]) => behavior);
-    behaviors.forEach(this.takeBehavior.bind(this));
+      .map(([propertyToken, _]) => propertyToken);
+    behaviorPropertyToken.forEach(this.takeBehavior.bind(this));
   }
 
   render(): void {
