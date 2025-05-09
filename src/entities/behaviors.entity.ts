@@ -85,7 +85,7 @@ export default class BehaviorsEntity {
   validateBehavior<Behavior extends E_BEHAVIORS>(behavior: Behavior) {
     if (!this.hasBehavior(behavior)) return false;
     if (!this.hasActiveBehavior(behavior)) return false;
-    // if (!this.hasBehaviorOptions(behavior)) return false;
+    if (!this.hasBehaviorOptions(behavior)) return false;
     return true;
   }
 

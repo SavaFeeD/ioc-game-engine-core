@@ -34,10 +34,10 @@ export default class GameController implements AbstractGameController {
   }
 
   public run(context: E_RENDERING_CONTEXT_ID) {
-    this.renderingService.updateRenderingPackages(context);
     requestAnimationFrame(() => {
+      this.renderingService.updateRenderingPackages(context);
       this.renderingService.renderFrame();
-      this.canvasService.clear(context);
+      // this.canvasService.clear(context);
     });
   }
 
