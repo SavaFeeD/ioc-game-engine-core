@@ -14,6 +14,8 @@ import RenderingService from "@services/rendering.service";
 
 @Controller(E_CONTOROLLERS_TOKENS.GAME)
 export default class GameController implements AbstractGameController {
+  private _paused = false;
+
   constructor(
     private drawService: DrawService,
     private renderingService: RenderingService,
@@ -37,11 +39,22 @@ export default class GameController implements AbstractGameController {
     this.renderingService.updateRenderingPackages(context);
     this.canvasService.clear(context);
     this.renderingService.renderFrame();
-    requestAnimationFrame(() => this.renderFrame(context));
+    if (!this._paused) {
+      this.run(context);
+    }
   }
 
   public run(context: E_RENDERING_CONTEXT_ID) {
     requestAnimationFrame(() => this.renderFrame(context));
+  }
+
+  public pause() {
+    this._paused = true;
+  }
+
+  public resume(context: E_RENDERING_CONTEXT_ID) {
+    this._paused = false;
+    this.run(context);
   }
 
 }
