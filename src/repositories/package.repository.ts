@@ -33,8 +33,6 @@ export default class PackageRepository {
   }
 
   public getPackagesByContext<Context extends E_RENDERING_CONTEXT_ID>(context: Context): IPackage<Context, IEntity<Context>>[] {
-    console.log('[getPackagesByContext] context:', context);
-    console.log('[getPackagesByContext] this.packages:', this.packages);
     const packages = this.packages.get(context) || [];
     return (packages as unknown) as IPackage<Context, IEntity<Context>>[];
   }
