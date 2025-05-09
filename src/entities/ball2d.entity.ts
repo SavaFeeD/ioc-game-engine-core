@@ -21,7 +21,7 @@ export default class Ball2D implements IBallEntity {
   public radius: IBallEntity['radius'];
   public color: IBallEntity['color'];
   
-  public behaviors: BehaviorsEntity = new BehaviorsEntity();
+  public readonly behaviors: BehaviorsEntity = new BehaviorsEntity();
 
   private _ctx: CanvasRenderingContext2D | null = null;
 
@@ -94,7 +94,7 @@ export default class Ball2D implements IBallEntity {
   }
 
   update(): void {
-    console.log('this.behaviors', this.behaviors);
+    console.log('this', this);
     console.log('this.behaviors.properties', this.behaviors.getAllProperties());
     const behaviors = (Object.entries(this.behaviors.getAllProperties()) as [E_BEHAVIOR_PROPERTY, boolean][])
       .filter(([_, hasBehavior]) => hasBehavior)
