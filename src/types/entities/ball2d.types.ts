@@ -15,7 +15,7 @@ export interface IBallEntity extends IEntity<E_RENDERING_CONTEXT_ID.DIMENSIONAL2
   };
   radius: number;
   color: string;
-  update(options: IUpdateBallOptions): void;
+  update(): void;
   render(): void;
 }
 
