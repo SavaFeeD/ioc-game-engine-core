@@ -20,25 +20,29 @@ export default class MoveCalculator2d {
       this.position.x,
       this.position.y,
     );
+    const velocity = new Point2d(
+      this.velocity.x,
+      this.velocity.y,
+    );
 
     switch(this.direction) {
       case E_MOVE_DIRECTION.LEFT:
-        this.velocity.x = -this.velocity.x;
+        velocity.x = -this.velocity.x;
         break;
       case E_MOVE_DIRECTION.RIGHT:
-        this.velocity.x = Math.abs(this.velocity.x);
+        velocity.x = Math.abs(this.velocity.x);
         break;
       case E_MOVE_DIRECTION.UP || E_MOVE_DIRECTION.FORWARD:
-        this.velocity.y = -this.velocity.y;
+        velocity.y = -this.velocity.y;
         break;
       case E_MOVE_DIRECTION.DOWN || E_MOVE_DIRECTION.BACKWARD:
-        this.velocity.y = Math.abs(this.velocity.y);
+        velocity.y = Math.abs(this.velocity.y);
         break;
     }
     
     const end = new Point2d(
-      this.position.x + this.velocity.x,
-      this.position.y + this.velocity.y,
+      this.position.x + velocity.x,
+      this.position.y + velocity.y,
     );
     
     return new Line2d(start, end);
