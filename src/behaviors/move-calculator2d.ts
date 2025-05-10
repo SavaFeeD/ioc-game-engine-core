@@ -28,14 +28,18 @@ export default class MoveCalculator2d {
     switch(this.direction) {
       case E_MOVE_DIRECTION.LEFT:
         velocity.x = -this.velocity.x;
+        velocity.y = 0;
         break;
       case E_MOVE_DIRECTION.RIGHT:
         velocity.x = Math.abs(this.velocity.x);
+        velocity.y = 0;
         break;
       case E_MOVE_DIRECTION.UP || E_MOVE_DIRECTION.FORWARD:
+        velocity.x = 0;
         velocity.y = -this.velocity.y;
         break;
       case E_MOVE_DIRECTION.DOWN || E_MOVE_DIRECTION.BACKWARD:
+        velocity.x = 0;
         velocity.y = Math.abs(this.velocity.y);
         break;
     }
