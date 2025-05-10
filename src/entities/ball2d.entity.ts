@@ -66,6 +66,10 @@ export default class Ball2D implements IBallEntity {
     this.behaviors.setActiveBehavior(behavior);
   }
 
+  unsetActiveBehavior<Behavior extends E_BEHAVIORS>(behavior: Behavior) {
+    this.behaviors.removeActiveBehavior(behavior);
+  }
+
   setBehaviorOptions<Behavior extends E_BEHAVIORS>(behavior: Behavior, options: TBehaviorOptions<Behavior>) {
     this.behaviors.setBehaviorOptions(behavior, options);
   }

@@ -58,6 +58,12 @@ export default class BehaviorsEntity {
     this.activeBehaviors.set(behavior, activeBehaviorValue);
   }
 
+  removeActiveBehavior<Behavior extends E_BEHAVIORS>(behavior: Behavior) {
+    if (this.activeBehaviors.has(behavior)) {
+      this.activeBehaviors.delete(behavior);
+    }
+  }
+
   hasBehavior<Behavior extends E_BEHAVIORS>(behavior: Behavior) {
     return this.activeBehaviors.has(behavior);
   }
