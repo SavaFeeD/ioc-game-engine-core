@@ -58,8 +58,15 @@ export default class BehaviorsEntity {
     this.activeBehaviors.set(behavior, activeBehaviorValue);
   }
 
-  removeActiveBehavior<Behavior extends E_BEHAVIORS>(behavior: Behavior) {
-    if (this.activeBehaviors.has(behavior)) {
+  removeActiveBehavior<Behavior extends E_BEHAVIORS>(behavior: Behavior, filter?: TBehaviorOptions<Behavior>) {
+    if (!this.activeBehaviors.has(behavior)) return;
+
+    if (filter) {
+      const behaviorOptions = this.behaviorsOptions.get(behavior);
+      if (behaviorOptions === filter) {
+        this.activeBehaviors.delete(behavior);
+      }
+    } else {
       this.activeBehaviors.delete(behavior);
     }
   }
