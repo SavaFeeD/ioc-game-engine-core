@@ -63,6 +63,7 @@ export default class BehaviorsEntity {
 
     if (filter) {
       const behaviorOptions = this.behaviorsOptions.get(behavior);
+      console.log('behaviorOptions === filter', behaviorOptions, filter, behaviorOptions === filter);
       if (behaviorOptions === filter) {
         this.activeBehaviors.delete(behavior);
       }
