@@ -63,9 +63,26 @@ export default class BehaviorsEntity {
 
     if (filter) {
       const behaviorOptions = this.behaviorsOptions.get(behavior);
-      console.log('behaviorOptions === filter', behaviorOptions, filter, behaviorOptions === filter);
-      if (behaviorOptions === filter) {
-        this.activeBehaviors.delete(behavior);
+      if (!!behaviorOptions) {
+        if (typeof behaviorOptions === 'object') {
+          let isMatch = true;
+          const entryFilter = Object.entries(filter);
+          if (!entryFilter.length) {
+            isMatch = false;
+          }
+          entryFilter.forEach(([key, value]) => {
+            if (behaviorOptions[key] !== value) {
+              isMatch = false;
+            }
+          });
+          if (isMatch) {
+            this.activeBehaviors.delete(behavior);
+          }
+        } else {
+          if (behaviorOptions === filter) {
+            this.activeBehaviors.delete(behavior);
+          }
+        }
       }
     } else {
       this.activeBehaviors.delete(behavior);
